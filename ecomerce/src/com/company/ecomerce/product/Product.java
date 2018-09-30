@@ -3,6 +3,7 @@ package com.company.ecomerce.product;
 import java.util.List;
 
 public class Product {
+	private int ProductID;
 	private String name;
 	private String details;
 	private double cost;
