@@ -18,7 +18,6 @@ public class Order {
 	}
 	public int getOrderID() {
 		return this.orderID;
-		
 	}
 	public OrderDetails getOrderDetails() {
 		return this.orderDetails;

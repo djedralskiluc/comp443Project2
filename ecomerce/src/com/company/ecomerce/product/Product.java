@@ -6,33 +6,27 @@ public class Product {
 	private int ProductID;
 	private String name;
 	private String details;
-	private double cost;
-	private List<ProductReview> reviews;
+	private List<ProductReview> Reviews; 
+	Product(){
 	
-	
-	public Product() {}
+	}
+	public String getName() {
+		return name;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getName() {
-		return this.name;
+	public String getDetails() {
+		return details;
 	}
 	public void setDetails(String details) {
 		this.details = details;
 	}
-	public String getDetails() {
-		return this.details;
+	public List<ProductReview> getReviews() {
+		return Reviews;
 	}
-	public void setCost(double cost) {
-		this.cost = cost;
+	public void setReviews(List<ProductReview> reviews) {
+		Reviews = reviews;
 	}
-	public double getCost() {
-		return this.cost;
-	}
-	public void setProductReviews(List<ProductReview> reviews) {
-		this.reviews = reviews;
-	}
-	public List<ProductReview> getProductReviews(){
-		return this.reviews;
-	}
+	
 }
