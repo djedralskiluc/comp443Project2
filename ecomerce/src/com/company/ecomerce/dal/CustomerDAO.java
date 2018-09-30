@@ -8,7 +8,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import com.company.ecomerce.Customer;
+import com.company.ecomerce.Customer.*;
 
 public class CustomerDAO{
 
@@ -29,7 +29,7 @@ public class CustomerDAO{
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from Customer where gid='" + id +"'";
+			String selectQuery = "SELECT * from Customer where CustomerID='" + CustomerID +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			
@@ -67,7 +67,7 @@ public class CustomerDAO{
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String CustomerID = resultSet.getString("CustomerID");
+				String CustomerID = resultSet.getString("gid");
 				Customer emp = getCustomer(CustomerID);
 				if(emp != null) {
 					Customers.add(emp);
