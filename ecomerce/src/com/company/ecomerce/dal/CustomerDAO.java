@@ -67,7 +67,7 @@ public class CustomerDAO{
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String CustomerID = resultSet.getString("gid");
+				String CustomerID = resultSet.getString("CustomerID");
 				Customer emp = getCustomer(CustomerID);
 				if(emp != null) {
 					Customers.add(emp);
