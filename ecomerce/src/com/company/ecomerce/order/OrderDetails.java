@@ -23,7 +23,13 @@ public class OrderDetails {
 	public void setDate(String date) {
 		this.date = date;
 	}
-	public void setProducts(List<Products> products) {
+	public void setProducts(List<Product> products) {
 		this.products = products;
+	}
+	public Address getAddress() {
+		return address;
+	}
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }
