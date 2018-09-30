@@ -8,9 +8,9 @@ public final class DBConfig {
 	
 	public DBConfig(){
 		username="admin";
-		password="password1!";
-		databaseURL="comp433.cba9y4ccno8d.us-east-2.rds.amazonaws.com:3306";
-		databaseName="Comp433Project";
+		password="password2";
+		databaseURL="proj433.cba9y4ccno8d.us-east-2.rds.amazonaws.com:3306";
+		databaseName="comp433";
 	}
 	
 	public String getUsername() {
