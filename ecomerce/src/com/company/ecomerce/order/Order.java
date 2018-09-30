@@ -21,7 +21,7 @@ public class Order {
 		
 	}
 	public OrderDetails getOrderDetails() {
-		return this.getOrderDetails();
+		return this.orderDetails;
 	}
 	public OrderStatus getOrderStatus() {
 		return this.orderStatus;

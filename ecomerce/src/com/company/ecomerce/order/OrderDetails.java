@@ -1,6 +1,9 @@
 package com.company.ecomerce.order;
 import java.util.List;
 
+import com.company.ecomerce.customer.Address;
+import com.company.ecomerce.product.*;;
+
 public class OrderDetails {
 	
 	private List<Product> products;
