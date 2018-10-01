@@ -1,15 +1,21 @@
 package com.company.ecomerce.order;
 
+import java.util.List;
+
+import com.company.ecomerce.customer.Address;
 import com.company.ecomerce.customer.Customer;
+import com.company.ecomerce.product.Product;
 
 public class Order {
 	
 	
 	private int orderID;
 	private Payment payment;
-	private OrderDetails orderDetails;
 	private OrderStatus orderStatus;
-	private Customer customer;
+	private int customerId;
+	private List<Integer> productIds;
+	private String date;
+	private Address addressId;
 	
 	public Order() {
 	}
@@ -19,14 +25,14 @@ public class Order {
 	public int getOrderID() {
 		return this.orderID;
 	}
-	public OrderDetails getOrderDetails() {
-		return this.orderDetails;
-	}
 	public OrderStatus getOrderStatus() {
 		return this.orderStatus;
 	}
-	public Customer getCustomer() {
-		return this.customer;
+	public int getCustomerId() {
+		return this.customerId;
+	}
+	public void setCustomerId(int customerId){
+		this.customerId = customerId;
 	}
 	public void setOrderID(int id) {
 		this.orderID = id;
@@ -34,13 +40,26 @@ public class Order {
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-	public void setOrderDetails(OrderDetails orderDetails) {
-		this.orderDetails = orderDetails;
-	}
 	public void setOrderStatus(OrderStatus orderStatus) {
 		this.orderStatus = orderStatus;
 	}
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
+	public List<Integer> getProductIds() {
+		return productIds;
 	}
+	public void setProductIds(List<Integer> productIds) {
+		this.productIds = productIds;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public Address getAddressId() {
+		return addressId;
+	}
+	public void setAddressId(Address addressId) {
+		this.addressId = addressId;
+	}
+
 }
