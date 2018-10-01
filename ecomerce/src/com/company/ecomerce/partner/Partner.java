@@ -14,6 +14,9 @@ public class Partner {
 	public int getPartnerID() {
 		return this.partnerID;
 	}
+	public void setPartnerID(int partnerID) {
+		this.partnerID = partnerID;
+	}
 	public List<Product> getProducts(){
 		return this.products;
 	}

@@ -8,6 +8,7 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
+import com.company.ecomerce.customer.Address;
 import com.company.ecomerce.product.*;
 
 public class ProductDAO {
@@ -86,32 +87,27 @@ public class ProductDAO {
 		
 	}
 	
-	public Product addProduct(String firstName, String lastName) {
+	public Product addProduct(String name, String details, double cost, int partnerID) {
 		
-		Customer Customer = new Customer();
+		Product product = new Product();
 		
 		Random randomGenerator = new Random();
-	    int randomInt = randomGenerator.nextInt(10000);
-	    String randomLong = Long.toString(randomGenerator.nextLong());
-	    String id = "XY" + randomInt;
-	    
-		Customer.setGid(id);
-		Customer.setFirstName(firstName);
-		Customer.setLastName(lastName);
-		Customer.setSalary(Long.parseLong(randomLong));
-		Set<String> privileges = new HashSet<String>();
-		privileges.add("Free Lunch");
-		Customer.setPrivileges(privileges);		
+	    int productID = randomGenerator.nextInt(10000);
+	    product.setProductID(productID);
+	    product.setName(name);
+	    product.setDetails(details);
+	    product.setCost(cost);
+	    product.setPartnerID(partnerID);
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
 			
-			String insertQuery = "INSERT INTO * Customer (gid,firstName,lastName,salary)"
-					+ "VALUES('"+id+"','"+firstName+"','"+lastName+"','"+randomLong+"')";
+			String insertQuery = "INSERT INTO * Customer (ProductID,Name,Details,Cost,PartnerID)"
+					+ "VALUES('"+productID+"','"+name+"','"+details+"','"+cost+"','"+partnerID+"')";
 			insertStatement.executeUpdate(insertQuery);
 			
-			CustomerPrivilegeDAO.insertPrivileges(id,privileges);
+			
 		
 			
 		}catch(SQLException se) {
@@ -124,7 +120,48 @@ public class ProductDAO {
 			}
 		}
 		
-		return Customer;
+		return product;
+	}
+	
+	public void updateProduct(int productID, double cost) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement updateStatement = connection.createStatement();
+			
+			String updateQuery = "UPDATE Product SET Cost ='"+cost+"' WHERE ProductId='"+productID+"')";
+			updateStatement.executeUpdate(updateQuery);		
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+	}
+	
+	public void deleteProduct(int productID) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement deleteStatement = connection.createStatement();
+			
+			String deleteQuery = "DELETE FROM ProductID WHERE ProductID='"+productID+"')";
+			deleteStatement.executeUpdate(deleteQuery);	
+			
+			productReviewDAO.deleteReviews(productID);
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
 	}
 
 }

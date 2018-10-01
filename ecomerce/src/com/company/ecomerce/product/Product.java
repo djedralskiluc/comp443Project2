@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Product {
 	private int productID;
+	private int partnerID;
 	private String name;
 	private String details;
 	private double cost;
@@ -40,6 +41,12 @@ public class Product {
 	}
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+	public int getPartnerID() {
+		return partnerID;
+	}
+	public void setPartnerID(int partnerID) {
+		this.partnerID = partnerID;
 	}
 	
 }
