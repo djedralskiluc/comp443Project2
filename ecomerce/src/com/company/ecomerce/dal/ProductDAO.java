@@ -17,7 +17,7 @@ public class ProductDAO {
 	
 	}
 	
-	public Product getProduct(int productID) {
+	public Product getProduct(int productId) {
 		String name = "";
 		String details = "";
 		double cost = 0;
@@ -27,7 +27,7 @@ public class ProductDAO {
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from Product where ProductID='" + productID +"'";
+			String selectQuery = "SELECT * from Product where ProductId='" + productId +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			
@@ -48,7 +48,7 @@ public class ProductDAO {
 		}
 		
 		Product product = new Product();
-		product.setProductID(productID);
+		product.setProductId(productId);
 		product.setName(name);
 		product.setDetails(details);
 		product.setCost(cost);
@@ -66,8 +66,8 @@ public class ProductDAO {
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				int productID = resultSet.getInt("ProductID");
-				Product prod = getProduct(productID);
+				int productId = resultSet.getInt("ProductId");
+				Product prod = getProduct(productId);
 				if(prod != null) {
 					Products.add(prod);
 				}
@@ -87,24 +87,24 @@ public class ProductDAO {
 		
 	}
 	
-	public Product addProduct(String name, String details, double cost, int partnerID) {
+	public Product addProduct(String name, String details, double cost, int partnerId) {
 		
 		Product product = new Product();
 		
 		Random randomGenerator = new Random();
-	    int productID = randomGenerator.nextInt(10000);
-	    product.setProductID(productID);
+	    int productId = randomGenerator.nextInt(10000);
+	    product.setProductId(productId);
 	    product.setName(name);
 	    product.setDetails(details);
 	    product.setCost(cost);
-	    product.setPartnerID(partnerID);
+	    product.setPartnerId(partnerId);
 		
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
 			
-			String insertQuery = "INSERT INTO * Customer (ProductID,Name,Details,Cost,PartnerID)"
-					+ "VALUES('"+productID+"','"+name+"','"+details+"','"+cost+"','"+partnerID+"')";
+			String insertQuery = "INSERT INTO * Customer (ProductId,Name,Details,Cost,PartnerId)"
+					+ "VALUES('"+productId+"','"+name+"','"+details+"','"+cost+"','"+partnerId+"')";
 			insertStatement.executeUpdate(insertQuery);
 			
 			
@@ -123,12 +123,12 @@ public class ProductDAO {
 		return product;
 	}
 	
-	public void updateProduct(int productID, double cost) {
+	public void updateProduct(int productId, double cost) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE Product SET Cost ='"+cost+"' WHERE ProductId='"+productID+"')";
+			String updateQuery = "UPDATE Product SET Cost ='"+cost+"' WHERE ProductId='"+productId+"')";
 			updateStatement.executeUpdate(updateQuery);		
 			
 		}catch(SQLException se) {
@@ -142,15 +142,15 @@ public class ProductDAO {
 		}
 	}
 	
-	public void deleteProduct(int productID) {
+	public void deleteProduct(int productId) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement deleteStatement = connection.createStatement();
 			
-			String deleteQuery = "DELETE FROM ProductID WHERE ProductID='"+productID+"')";
+			String deleteQuery = "DELETE FROM Product WHERE ProductId='"+productId+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
-			
-			productReviewDAO.deleteReviews(productID);
+			ProductReviewDAO productReviewDAO = new ProductReviewDAO();
+			productReviewDAO.deleteProductReviews(productId);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();

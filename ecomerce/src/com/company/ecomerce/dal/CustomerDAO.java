@@ -29,7 +29,7 @@ public class CustomerDAO{
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from Customer where CustomerID='" + id +"'";
+			String selectQuery = "SELECT * from Customer where CustomerId='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			
@@ -64,8 +64,8 @@ public class CustomerDAO{
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String CustomerID = resultSet.getString("Id");
-				Customer emp = getCustomer(CustomerID);
+				String CustomerId = resultSet.getString("Id");
+				Customer emp = getCustomer(CustomerId);
 				if(emp != null) {
 					Customers.add(emp);
 				}
