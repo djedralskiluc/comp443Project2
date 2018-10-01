@@ -19,18 +19,18 @@ public class CustomerManager {
 	}
 	
 
-	public Customer addCustomer(String firstName, String lastName) {
-		
-		Customer emp = dao.addCustomer(firstName, lastName);
+	public Customer addCustomer(String firstName, String lastName,String phoneNumber, Address addr) {
+
+		Customer emp = dao.addCustomer(firstName, lastName,phoneNumber,addr);
 		
 		return emp;
 	}
 
-	public void updateCustomer(String id, long salary) {
-		dao.updateCustomer(id, salary);
+	public void updateCustomer(int id, String phoneNumber, Address addr) {
+		dao.updateCustomer(id, phoneNumber,addr);
 	}
 
-	public void deleteCustomer(String id) {
+	public void deleteCustomer(int id) {
 		dao.deleteCustomer(id);
 	}
 

@@ -8,36 +8,34 @@ import java.util.HashSet;
 import java.util.Random;
 import java.util.Set;
 
-import com.company.ecomerce.Customer.*;
+import com.company.ecomerce.customer.Address;
+import com.company.ecomerce.customer.Customer;
 
 public class CustomerDAO{
 
 	
-	private CustomerPrivilegeDAO CustomerPrivilegeDAO;
+	private AddressDAO addressDAO;
 		
 	public  CustomerDAO() {
-		CustomerPrivilegeDAO = new CustomerPrivilegeDAO();
+		AddressDAO addressDAO = new AddressDAO();
 	}
 	
 	public Customer getCustomer(String id) {
 		String lastName = "";
 		String firstName="";
-		String salary = "";
-		Set<String> privileges = new HashSet<>();
+		
 		Connection connection = DBConnect.getDatabaseConnection();
 		
 		try {
 			Statement selectStatement = connection.createStatement();
 			
-			String selectQuery = "SELECT * from Customer where CustomerID='" + CustomerID +"'";
+			String selectQuery = "SELECT * from Customer where CustomerID='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
 			
 			lastName = resultSet.getString("lastName");
 			firstName = resultSet.getString("firstName");
-			salary = resultSet.getString("salary");
-			
-			privileges = CustomerPrivilegeDAO.getPrivileges(id);
+
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
@@ -51,8 +49,7 @@ public class CustomerDAO{
 		Customer Customer = new Customer();
 		Customer.setFirstName(firstName);
 		Customer.setLastName(lastName);
-		Customer.setPrivileges(privileges);
-		Customer.setSalary(Long.parseLong(salary));
+		
 		return Customer;
 	}
 	
@@ -67,7 +64,7 @@ public class CustomerDAO{
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String CustomerID = resultSet.getString("gid");
+				String CustomerID = resultSet.getString("Id");
 				Customer emp = getCustomer(CustomerID);
 				if(emp != null) {
 					Customers.add(emp);
@@ -88,32 +85,22 @@ public class CustomerDAO{
 		
 	}
 	
-	public Customer addCustomer(String firstName, String lastName) {
+	public Customer addCustomer(String firstName, String lastName,String phoneNumber,Address addr) {
 		
-		Customer Customer = new Customer();
-		
-		Random randomGenerator = new Random();
-	    int randomInt = randomGenerator.nextInt(10000);
-	    String randomLong = Long.toString(randomGenerator.nextLong());
-	    String id = "XY" + randomInt;
-	    
-		Customer.setGid(id);
-		Customer.setFirstName(firstName);
-		Customer.setLastName(lastName);
-		Customer.setSalary(Long.parseLong(randomLong));
-		Set<String> privileges = new HashSet<String>();
-		privileges.add("Free Lunch");
-		Customer.setPrivileges(privileges);		
-		
+		Customer customer = new Customer();
+		customer.setAddr(addr);
+		customer.setFirstName(firstName);
+		customer.setLastName(lastName);
+		customer.setPhoneNumber(phoneNumber);
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
-			
-			String insertQuery = "INSERT INTO * Customer (gid,firstName,lastName,salary)"
-					+ "VALUES('"+id+"','"+firstName+"','"+lastName+"','"+randomLong+"')";
+			addressDAO.insertAddress(addr);
+			String insertQuery = "INSERT INTO * Customer (firstName,lastName,phone,AddressId)"
+					+ "VALUES('"+firstName+"','"+lastName+"','"+phoneNumber+"','"+1+"')";
 			insertStatement.executeUpdate(insertQuery);
 			
-			CustomerPrivilegeDAO.insertPrivileges(id,privileges);
+			
 		
 			
 		}catch(SQLException se) {
@@ -126,15 +113,15 @@ public class CustomerDAO{
 			}
 		}
 		
-		return Customer;
+		return customer;
 	}
 	
-	public void updateCustomer(String id, long salary) {
+	public void updateCustomer(int id, String phoneNumber,Address addr) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement updateStatement = connection.createStatement();
 			
-			String updateQuery = "UPDATE Customer SET salary='"+Long.toString(salary)+"' WHERE gid='"+id+"')";
+			String updateQuery = "UPDATE Customer SET phone='"+phoneNumber+"' WHERE CustomerId='"+id+"')";
 			updateStatement.executeUpdate(updateQuery);		
 			
 		}catch(SQLException se) {
@@ -148,7 +135,7 @@ public class CustomerDAO{
 		}
 	}
 	
-	public void deleteCustomer(String id) {
+	public void deleteCustomer(int id) {
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement deleteStatement = connection.createStatement();
@@ -156,7 +143,7 @@ public class CustomerDAO{
 			String deleteQuery = "DELETE FROM Customer WHERE gid='"+id+"')";
 			deleteStatement.executeUpdate(deleteQuery);	
 			
-			CustomerPrivilegeDAO.deletePrivileges(id);
+			addressDAO.deleteAddress(id);
 			
 		}catch(SQLException se) {
 			se.printStackTrace();
