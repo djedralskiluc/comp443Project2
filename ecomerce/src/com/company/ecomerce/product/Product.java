@@ -3,8 +3,8 @@ package com.company.ecomerce.product;
 import java.util.List;
 
 public class Product {
-	private int productID;
-	private int partnerID;
+	private int productId;
+	private int partnerId;
 	private String name;
 	private String details;
 	private double cost;
@@ -12,11 +12,11 @@ public class Product {
 	public Product(){
 	
 	}
-	public void setProductID(int id) {
-		this.productID = id;
+	public void setProductId(int id) {
+		this.productId = id;
 	}
-	public int getProductID() {
-		return this.productID;
+	public int getProductId() {
+		return this.productId;
 	}
 	public String getName() {
 		return name;
@@ -42,11 +42,11 @@ public class Product {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
-	public int getPartnerID() {
-		return partnerID;
+	public int getPartnerId() {
+		return partnerId;
 	}
-	public void setPartnerID(int partnerID) {
-		this.partnerID = partnerID;
+	public void setPartnerId(int partnerId) {
+		this.partnerId = partnerId;
 	}
 	
 }

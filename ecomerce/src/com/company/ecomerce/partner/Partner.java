@@ -4,18 +4,18 @@ import java.util.List;
 
 public class Partner {
 	
-	private int partnerID;
+	private int partnerId;
 	private List<Product> products;
 	private String name;
 	private int partnerType;
 	
 	public Partner() {}
 	
-	public int getPartnerID() {
-		return this.partnerID;
+	public int getPartnerId() {
+		return this.partnerId;
 	}
-	public void setPartnerID(int partnerID) {
-		this.partnerID = partnerID;
+	public void setPartnerId(int partnerId) {
+		this.partnerId = partnerId;
 	}
 	public List<Product> getProducts(){
 		return this.products;
@@ -26,8 +26,8 @@ public class Partner {
 	public int getPartnerType() {
 		return this.partnerType;
 	}
-	public void setParterID(int id) {
-		this.partnerID = id;
+	public void setParterId(int id) {
+		this.partnerId = id;
 	}
 	public void setProducts(List<Product> products) {
 		this.products = products;
