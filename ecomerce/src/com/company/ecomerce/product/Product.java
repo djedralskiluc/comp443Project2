@@ -3,12 +3,19 @@ package com.company.ecomerce.product;
 import java.util.List;
 
 public class Product {
-	private int ProductID;
+	private int productID;
 	private String name;
 	private String details;
+	private double cost;
 	private List<ProductReview> Reviews; 
-	Product(){
+	public Product(){
 	
+	}
+	public void setProductID(int id) {
+		this.productID = id;
+	}
+	public int getProductID() {
+		return this.productID;
 	}
 	public String getName() {
 		return name;
@@ -27,6 +34,12 @@ public class Product {
 	}
 	public void setReviews(List<ProductReview> reviews) {
 		Reviews = reviews;
+	}
+	public double getCost() {
+		return cost;
+	}
+	public void setCost(double cost) {
+		this.cost = cost;
 	}
 	
 }
