@@ -32,13 +32,13 @@ public class ProductReviewDAO {
 				int productReviewId = resultSet.getInt("ProductReviewId");
 				String review = resultSet.getString("Review");
 				int rating = resultSet.getInt("Rating");
-				int productId = resultSet.getInt("ProductId");
+				int productId1 = resultSet.getInt("ProductId");
 				int customerId = resultSet.getInt("CustomerId");
 				
 				ProductReview productReview = new ProductReview();
 				productReview.setProductReviewId(productReviewId);
 				productReview.setReview(review);
-				productReview.setProductId(productId);
+				productReview.setProductId(productId1);
 				productReview.setCustomerId(customerId);
 				productReview.setRating(rating);
 				if(productReview != null) {
