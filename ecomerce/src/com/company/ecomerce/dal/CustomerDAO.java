@@ -20,7 +20,7 @@ public class CustomerDAO{
 		AddressDAO addressDAO = new AddressDAO();
 	}
 	
-	public Customer getCustomer(String id) {
+	public Customer getCustomer(int id) {
 		String lastName = "";
 		String firstName="";
 		
@@ -64,7 +64,7 @@ public class CustomerDAO{
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			
 			while(resultSet.next()) {
-				String CustomerId = resultSet.getString("Id");
+				int CustomerId = resultSet.getInt("Id");
 				Customer emp = getCustomer(CustomerId);
 				if(emp != null) {
 					Customers.add(emp);

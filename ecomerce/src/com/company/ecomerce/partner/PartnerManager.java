@@ -12,7 +12,7 @@ import com.company.ecomerce.product.Product;
 public class PartnerManager {
 private static PartnerDAO dao = new PartnerDAO();
 	
-	public Set<Partner> getAllPartner(){
+	public Set<Partner> getAllPartners(){
 		return dao.getAllPartners();
 	}
 	
@@ -35,7 +35,7 @@ private static PartnerDAO dao = new PartnerDAO();
 	public void deletePartner(int id) {
 		dao.deletePartner(id);
 	}
-	public List<Product> getPartnerroduct(int id){
+	public List<Product> getPartnerProduct(int id){
 		return null;
 	}
 

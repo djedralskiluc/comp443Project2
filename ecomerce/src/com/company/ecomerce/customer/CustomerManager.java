@@ -14,7 +14,7 @@ public class CustomerManager {
 		return dao.getAllCustomers();
 	}
 	
-	public Customer getCustomer(String id) {
+	public Customer getCustomer(int id) {
 		return dao.getCustomer(id);
 	}
 	
