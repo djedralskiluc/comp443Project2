@@ -38,4 +38,5 @@ public class Customer {
 	public void setAddr(Address addr) {
 		this.addr = addr;
 	}
+	
 }
