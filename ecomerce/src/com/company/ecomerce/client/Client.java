@@ -1,6 +1,7 @@
 package com.company.ecomerce.client;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Set;
@@ -18,6 +19,7 @@ import com.company.ecomerce.client.*;
 import com.company.ecomerce.customer.Address;
 import com.company.ecomerce.customer.Customer;
 import com.company.ecomerce.customer.CustomerManager;
+import com.company.ecomerce.order.OrderManager;
 import com.company.ecomerce.partner.PartnerManager;
 import com.company.ecomerce.product.ProductManager;
 
@@ -84,13 +86,13 @@ public final class Client {
        addr.setCity("New York");
        addr.setState("NY");
        addr.setZip("10001");
+       
        CustomerManager customerManager = new CustomerManager();
        customerManager.addCustomer("Ben","Stone","555-555-5555",addr);
        Set<Customer> customerList =  customerManager.getAllCustomers();
        Customer firstCustomer = customerList.iterator().next();
        customerManager.updateCustomer(firstCustomer.getCustomerID(), "444-444-4444", addr);
-       customerManager.getCustomer(firstCustomer.getCustomerID());
-       
+       customerManager.getCustomer(firstCustomer.getCustomerID());       
        customerManager.deleteCustomer(firstCustomer.getCustomerID());
        
        
@@ -110,6 +112,17 @@ public final class Client {
        partnerManager.getAllPartners();
        partnerManager.getPartnerProduct(1);
        partnerManager.deletePartner(1);
+       
+       OrderManager orderMangager = new OrderManager();
+       Integer[] ints = new Integer[] {1,2,3,4,5};
+       List<Integer> list = Arrays.asList(ints);
+       
+       orderMangager.addOrder(1,list,1, 1);
+       orderMangager.updateOrder(1, 2);
+       orderMangager.getAllOrders();
+       orderMangager.getOrder(1);
+       orderMangager.deleteOrder(1);
+       
        
        
        

@@ -4,13 +4,15 @@ import java.util.List;
 import java.util.Set;
 
 import com.company.ecomerce.dal.OrderDAO;
+import com.company.ecomerce.dal.ProductDAO;
 import com.company.ecomerce.product.Product;
 
 
 public class OrderManager {
 private static OrderDAO dao = new OrderDAO();
-	
-	public Set<Order> getAllPartners(){
+private static ProductDAO pdao = new ProductDAO();
+
+	public Set<Order> getAllOrders(){
 		return dao.getAllOrders();
 	}
 	
@@ -19,8 +21,10 @@ private static OrderDAO dao = new OrderDAO();
 	}
 	
 
-	public Order addPartner(int customerId,List<Product> products , double cost, int partnerId) {
-
+	public Order addOrder(int customerId,List<Integer> products , double cost, int partnerId) {
+//		for(int p : products){
+//			
+//		}
 		Order emp = dao.addOrder(customerId, products ,  cost,  partnerId);
 		
 		return emp;

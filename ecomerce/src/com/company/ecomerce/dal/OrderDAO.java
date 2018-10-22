@@ -119,7 +119,7 @@ public class OrderDAO {
 		
 	}
 	
-	public Order addOrder(int customerId,List<Product> products , double cost, int partnerId) {
+	public Order addOrder(int customerId,List<Integer> products , double cost, int partnerId) {
 		
 		Order order = new Order();
 		
