@@ -4,7 +4,7 @@ public class OrderStatus {
 	private String status;
 	private String lastUpdate;
 	
-	OrderStatus(String stat, String update){
+	public OrderStatus(String stat, String update){
 		this.status = stat;
 		this.lastUpdate = update;
 	}
