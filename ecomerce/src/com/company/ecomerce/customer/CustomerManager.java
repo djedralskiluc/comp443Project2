@@ -29,6 +29,10 @@ public class CustomerManager {
 	public void updateCustomer(int id, String phoneNumber, Address addr) {
 		dao.updateCustomer(id, phoneNumber,addr);
 	}
+	public void AddorUpdateCustomerPayment(int CustomerId, String CardType,String CCnumber,String Exp,String Pin,String NameOnCard) {
+		dao.addorUpdateCustomerPayment( CustomerId,  CardType, CCnumber, Exp, Pin, NameOnCard);
+	}
+
 
 	public void deleteCustomer(int id) {
 		dao.deleteCustomer(id);

@@ -155,5 +155,33 @@ public class CustomerDAO{
 			}
 		}
 	}
+
+	public void addorUpdateCustomerPayment(int customerId, String cardType, String cCnumber, String exp, String pin,
+			String nameOnCard) {
+		Connection connection = DBConnect.getDatabaseConnection();
+		try {
+			Statement insertStatement = connection.createStatement();
+			
+			String insertQuery = "INSERT INTO * PaymentType (customerId,cardType,cCnumber,exp,pin)"
+					+ "VALUES('"+customerId+"','"+cardType+"','"+cCnumber+"','"+exp+"','"+pin+"')";
+			insertStatement.executeUpdate(insertQuery);
+			
+			Statement updateStatement = connection.createStatement();
+			int paymentType = (int) (Math.random()*100);
+			String updateQuery = "UPDATE Customer SET PaymentType='"+paymentType+"' WHERE CustomerId='"+customerId+"')";
+			updateStatement.executeUpdate(updateQuery);	
+		
+			
+		}catch(SQLException se) {
+			se.printStackTrace();
+		}finally {
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {}
+			}
+		}
+		
+	}
 		
 }

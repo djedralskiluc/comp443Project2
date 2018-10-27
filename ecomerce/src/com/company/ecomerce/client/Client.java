@@ -92,13 +92,14 @@ public final class Client {
        Set<Customer> customerList =  customerManager.getAllCustomers();
        Customer firstCustomer = customerList.iterator().next();
        customerManager.updateCustomer(firstCustomer.getCustomerID(), "444-444-4444", addr);
-       customerManager.getCustomer(firstCustomer.getCustomerID());       
+       customerManager.getCustomer(firstCustomer.getCustomerID());  
+       customerManager.AddorUpdateCustomerPayment(firstCustomer.getCustomerID(), "AMEX", "555555555555", "04/20", "1234", "Customer J Daniel");
        customerManager.deleteCustomer(firstCustomer.getCustomerID());
        
        
        
        ProductManager productManager = new ProductManager();
-       productManager.addProduct("balls", "Box o balls", 4, 0);
+       productManager.addProduct("ballbox", "Box o balls", 4, 0);
        productManager.updateProduct(1, 5);
        productManager.getAllProducts();
        productManager.addProductReview("Thats a lot of balls in that Box", 5, 1, 1);
