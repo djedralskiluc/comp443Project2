@@ -3,7 +3,7 @@ import com.company.ecomerce.customer.Address;
 public class Payment {
 	private Address address;
 	private double amount;
-	Payment(){
+	public Payment(){
 	}
 	public Address getAddress() {
 		return address;

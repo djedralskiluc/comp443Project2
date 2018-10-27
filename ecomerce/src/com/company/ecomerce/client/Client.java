@@ -37,48 +37,48 @@ public final class Client {
         
         /*****************************************************************************************
          * GET METHOD invoke
-         *****************************************************************************************/
-        System.out.println("GET METHOD .........................................................");
-        WebClient getClient = WebClient.create("http://localhost:8081", providers);
-        
-        //Configuring the CXF logging interceptor for the outgoing message
-        WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
-      //Configuring the CXF logging interceptor for the incoming response
-        WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
-        
-        // change application/xml  to get in xml format
-        getClient = getClient.accept("application/json").type("application/json").path("/employeeservice/employee/XY1111");
-        
-        //The following lines are to show how to log messages without the CXF interceptors
-        String getRequestURI = getClient.getCurrentURI().toString();
-        System.out.println("Client GET METHOD Request URI:  " + getRequestURI);
-        String getRequestHeaders = getClient.getHeaders().toString();
-        System.out.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
-        
-        //to see as raw XML/json
-        String response = getClient.get(String.class);
-        System.out.println("GET METHOD Response: ...." + response);
-        
-       //to get the response as object of Employee class
-       //Employee employee = client.get(Employee.class);
-       //System.out.println("Name:" + employee.getFirstName());
-       //System.out.println("privileges:" + employee.getPrivileges());
-       
-       /*****************************************************************************************
-        * POST METHOD invoke
-       *****************************************************************************************/
-       System.out.println("POST METHOD .........................................................");
-       WebClient postClient = WebClient.create("http://localhost:8081", providers);
-       WebClient.getConfig(postClient).getOutInterceptors().add(new LoggingOutInterceptor());
-       WebClient.getConfig(postClient).getInInterceptors().add(new LoggingInInterceptor());
-                
-       // change application/xml  to application/json get in json format
-       postClient = postClient.accept("application/xml").type("application/json").path("/employeeservice/employee");
-    	
-       String postRequestURI = postClient.getCurrentURI().toString();
-       System.out.println("Client POST METHOD Request URI:  " + postRequestURI);
-       String postRequestHeaders = postClient.getHeaders().toString();
-       System.out.println("Client POST METHOD Request Headers:  " + postRequestHeaders);
+//         *****************************************************************************************/
+//        System.out.println("GET METHOD .........................................................");
+//        WebClient getClient = WebClient.create("http://localhost:8081", providers);
+//        
+//        //Configuring the CXF logging interceptor for the outgoing message
+//        WebClient.getConfig(getClient).getOutInterceptors().add(new LoggingOutInterceptor());
+//      //Configuring the CXF logging interceptor for the incoming response
+//        WebClient.getConfig(getClient).getInInterceptors().add(new LoggingInInterceptor());
+//        
+//        // change application/xml  to get in xml format
+//        getClient = getClient.accept("application/json").type("application/json").path("/employeeservice/employee/XY1111");
+//        
+//        //The following lines are to show how to log messages without the CXF interceptors
+//        String getRequestURI = getClient.getCurrentURI().toString();
+//        System.out.println("Client GET METHOD Request URI:  " + getRequestURI);
+//        String getRequestHeaders = getClient.getHeaders().toString();
+//        System.out.println("Client GET METHOD Request Headers:  " + getRequestHeaders);
+//        
+//        //to see as raw XML/json
+//        String response = getClient.get(String.class);
+//        System.out.println("GET METHOD Response: ...." + response);
+//        
+//       //to get the response as object of Employee class
+//       //Employee employee = client.get(Employee.class);
+//       //System.out.println("Name:" + employee.getFirstName());
+//       //System.out.println("privileges:" + employee.getPrivileges());
+//       
+//       /*****************************************************************************************
+//        * POST METHOD invoke
+//       *****************************************************************************************/
+//       System.out.println("POST METHOD .........................................................");
+//       //WebClient postClient = WebClient.create("http://localhost:8081", providers);
+//       //WebClient.getConfig(postClient).getOutInterceptors().add(new LoggingOutInterceptor());
+//       //WebClient.getConfig(postClient).getInInterceptors().add(new LoggingInInterceptor());
+//                
+//       // change application/xml  to application/json get in json format
+//       //postClient = postClient.accept("application/xml").type("application/json").path("/employeeservice/employee");
+//    	
+//       //String postRequestURI = postClient.getCurrentURI().toString();
+//       System.out.println("Client POST METHOD Request URI:  " + postRequestURI);
+//       String postRequestHeaders = postClient.getHeaders().toString();
+//       System.out.println("Client POST METHOD Request Headers:  " + postRequestHeaders);
        Customer customer = new Customer();
        //customer.addCustomer().setFirstName("Michael");
        Address addr  = new Address();
