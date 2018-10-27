@@ -55,10 +55,9 @@ public class PartnerDAO {
 			String selectQuery = "SELECT * from Partner where PartnerId='" + id +"'";
 			ResultSet resultSet = selectStatement.executeQuery(selectQuery);
 			resultSet.next();
-			Partner.set(resultSet.getInt(""));
-			Partner.setName(resultSet.getString(""));
-			Partner.setName(resultSet.getString(""));
-
+			Partner.setName(resultSet.getString("Name"));
+			Partner.setPartnerId(resultSet.getInt("PartnerId"));
+			Partner.setPartnerType(resultSet.getInt("PartnerType"));
 
 			
 		}catch(SQLException se) {

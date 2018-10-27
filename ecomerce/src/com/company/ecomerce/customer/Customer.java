@@ -7,6 +7,7 @@ public class Customer {
 	private String firstName;
 	private String phoneNumber;
 	private Address addr;
+	private PaymentType paymentType;
 	public Customer() {}
 	public void setCustomerID(int id) {
 		this.customerID = id;
@@ -37,6 +38,12 @@ public class Customer {
 	}
 	public void setAddr(Address addr) {
 		this.addr = addr;
+	}
+	public PaymentType getPaymentType() {
+		return paymentType;
+	}
+	public void setPaymentType(PaymentType paymentType) {
+		this.paymentType = paymentType;
 	}
 	
 }
