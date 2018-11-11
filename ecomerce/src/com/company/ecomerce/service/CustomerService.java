@@ -12,6 +12,7 @@ public interface CustomerService {
 	public Set<CustomerRepresentation> getCustomers();
 	public CustomerRepresentation getCustomer(int customerId);
 	public CustomerRepresentation createCustomer(CustomerRequest customerRequest);
+	public CustomerRepresentation updateCustomer(CustomerRequest customerRequest);
    
 
 }

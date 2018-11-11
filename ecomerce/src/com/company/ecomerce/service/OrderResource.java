@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,6 +44,15 @@ import com.company.ecomerce.workflow.OrderActivity;
 		@Produces({"application/xml" , "application/json"})
 		@Path("/order")
 		public OrderRepresentation createOrder(OrderRequest  orderRequest) {
+			System.out.println("POST METHOD Request from Client with ............." + orderRequest.getCustomerId() + "  " + orderRequest.getProducts() + "  " + orderRequest.getCost()+ "  " + orderRequest.getPartnerId());
+			OrderActivity empActivity = new OrderActivity();
+			return empActivity.createOrder(orderRequest.getCustomerId(), orderRequest.getProducts(), orderRequest.getCost(), orderRequest.getPartnerId());
+		}
+		
+		@PUT
+		@Produces({"application/xml" , "application/json"})
+		@Path("/order")
+		public OrderRepresentation updateOrder(OrderRequest  orderRequest) {
 			System.out.println("POST METHOD Request from Client with ............." + orderRequest.getCustomerId() + "  " + orderRequest.getProducts() + "  " + orderRequest.getCost()+ "  " + orderRequest.getPartnerId());
 			OrderActivity empActivity = new OrderActivity();
 			return empActivity.createOrder(orderRequest.getCustomerId(), orderRequest.getProducts(), orderRequest.getCost(), orderRequest.getPartnerId());

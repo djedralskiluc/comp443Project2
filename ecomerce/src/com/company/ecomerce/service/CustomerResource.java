@@ -5,6 +5,7 @@ import java.util.Set;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -43,6 +44,15 @@ import com.company.ecomerce.workflow.CustomerActivity;
 		@Produces({"application/xml" , "application/json"})
 		@Path("/customer")
 		public CustomerRepresentation createCustomer(CustomerRequest  customerRequest) {
+			System.out.println("POST METHOD Request from Client with ............." + customerRequest.getFirstName() + "  " + customerRequest.getLastName() + "  " + customerRequest.getPhoneNumber()+ "  " + customerRequest.getAddress());
+			CustomerActivity empActivity = new CustomerActivity();
+			return empActivity.createCustomer(customerRequest.getFirstName(), customerRequest.getLastName(),customerRequest.getPhoneNumber(),customerRequest.getAddress());
+		}
+		
+		@PUT
+		@Produces({"application/xml" , "application/json"})
+		@Path("/customer")
+		public CustomerRepresentation updateCustomer(CustomerRequest  customerRequest) {
 			System.out.println("POST METHOD Request from Client with ............." + customerRequest.getFirstName() + "  " + customerRequest.getLastName() + "  " + customerRequest.getPhoneNumber()+ "  " + customerRequest.getAddress());
 			CustomerActivity empActivity = new CustomerActivity();
 			return empActivity.createCustomer(customerRequest.getFirstName(), customerRequest.getLastName(),customerRequest.getPhoneNumber(),customerRequest.getAddress());

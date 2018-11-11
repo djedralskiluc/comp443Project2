@@ -12,6 +12,6 @@ public interface PartnerService {
 	public Set<PartnerRepresentation> getPartners();
 	public PartnerRepresentation getPartner(int partnerId);
 	public PartnerRepresentation createPartner(PartnerRequest partnerRequest);
-   
+	public PartnerRepresentation updatePartner(PartnerRequest partnerRequest);
 
 }

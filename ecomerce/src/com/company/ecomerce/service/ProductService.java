@@ -12,6 +12,6 @@ public interface ProductService {
 	public Set<ProductRepresentation> getProducts();
 	public ProductRepresentation getProduct(int productId);
 	public ProductRepresentation createProduct(ProductRequest productRequest);
-   
+	public ProductRepresentation updateProduct(ProductRequest productRequest);
 
 }
