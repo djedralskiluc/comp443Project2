@@ -10,8 +10,9 @@ import com.company.ecomerce.order.*;
 import com.company.ecomerce.service.representation.OrderRepresentation;
 
 public class OrderActivity {
-	private static OrderDAO dao = new OrderDAO();
-		//private static OrderManager dao = new OrderManager();
+	//private static OrderDAO dao = new OrderDAO();
+	//private static ProductDAO pdao = new ProductDAO();
+		private static OrderManager dao = new OrderManager();
 		
 		public Set<OrderRepresentation> getOrders() {
 			
@@ -33,8 +34,7 @@ public class OrderActivity {
 	          orderRepresentation.setOrderStatus(daop.getOrderStatus());
 	          orderRepresentation.setPayment(daop.getPayment());
 	          orderRepresentation.setProductIds(daop.getProductIds());	
-							
-	          	          
+	          orderRepresentation.setProducts(daop.getProducts());	         
 	          //now add this representation in the list
 	          orderRepresentations.add(orderRepresentation);
 	        }

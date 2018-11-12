@@ -20,6 +20,7 @@ public class OrderRepresentation {
 	private OrderStatus orderStatus;
 	private int customerId;
 	private List<Integer> productIds;
+	private List<Product>products;
 	private String date;
 	private Address addressId;
 	public OrderRepresentation() {}
@@ -52,6 +53,12 @@ public class OrderRepresentation {
 	}
 	public void setProductIds(List<Integer> productIds) {
 		this.productIds = productIds;
+	}
+	public List<Product> getProducts() {
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 	public String getDate() {
 		return date;

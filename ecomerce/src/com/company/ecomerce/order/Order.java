@@ -16,6 +16,7 @@ public class Order {
 	private List<Integer> productIds;
 	private String date;
 	private Address addressId;
+	private List<Product> products;
 	
 	public Order() {
 	}
@@ -60,6 +61,12 @@ public class Order {
 	}
 	public void setAddressId(Address addressId) {
 		this.addressId = addressId;
+	}
+	public List<Product> getProducts() {		
+		return products;
+	}
+	public void setProducts(List<Product> products) {
+		this.products = products;
 	}
 
 }

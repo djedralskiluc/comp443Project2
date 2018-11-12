@@ -143,7 +143,11 @@ public class OrderDAO {
 			String insertQuery = "INSERT INTO * Order (OrderId,CustomerId,Date,Payment,Address)"
 					+ "VALUES('"+orderId+"','"+customerId+"','"+date+"','"+pay+"','"+address+"')";
 			insertStatement.executeUpdate(insertQuery);
-			
+			for(Integer product:products) {
+				String insertProduct = "INSERT INTO * OrderProducts (OrderId,ProductId)"
+						+ "VALUES('"+orderId+"','"+product+"')";
+				insertStatement.executeUpdate(insertProduct);
+			}
 				
 			
 		}catch(SQLException se) {
