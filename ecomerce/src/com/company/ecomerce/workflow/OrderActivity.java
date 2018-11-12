@@ -7,12 +7,15 @@ import java.util.Set;
 
 import com.company.ecomerce.dal.OrderDAO;
 import com.company.ecomerce.order.*;
+import com.company.ecomerce.product.Product;
+import com.company.ecomerce.product.ProductManager;
 import com.company.ecomerce.service.representation.OrderRepresentation;
 
 public class OrderActivity {
 	//private static OrderDAO dao = new OrderDAO();
 	//private static ProductDAO pdao = new ProductDAO();
 		private static OrderManager dao = new OrderManager();
+		private static ProductManager pdao = new ProductManager();
 		
 		public Set<OrderRepresentation> getOrders() {
 			
@@ -34,7 +37,13 @@ public class OrderActivity {
 	          orderRepresentation.setOrderStatus(daop.getOrderStatus());
 	          orderRepresentation.setPayment(daop.getPayment());
 	          orderRepresentation.setProductIds(daop.getProductIds());	
-	          orderRepresentation.setProducts(daop.getProducts());	         
+	          List<Integer> productIds = daop.getProductIds();
+				List<Product> products = daop.getProducts();
+				for(Integer prodId :productIds)
+				{
+					products.add(pdao.getProduct(prodId));
+				}			
+				orderRepresentation.setProducts(products);         
 	          //now add this representation in the list
 	          orderRepresentations.add(orderRepresentation);
 	        }
@@ -54,7 +63,15 @@ public class OrderActivity {
 			daopRep.setOrderStatus(daopRep.getOrderStatus());
 			daopRep.setPayment(daopRep.getPayment());
 			daopRep.setProductIds(daopRep.getProductIds());	
+					
 			
+			List<Integer> productIds = daopRep.getProductIds();
+			List<Product> products = daopRep.getProducts();
+			for(Integer prodId :productIds)
+			{
+				products.add(pdao.getProduct(prodId));
+			}			
+			daopRep.setProducts(products);
 			return daopRep;
 		}
 		
@@ -71,7 +88,13 @@ public class OrderActivity {
 			daopRep.setOrderStatus(daopRep.getOrderStatus());
 			daopRep.setPayment(daopRep.getPayment());
 			daopRep.setProductIds(daopRep.getProductIds());	
-						
+			 List<Integer> productIds = daopRep.getProductIds();
+				List<Product> products1 = daopRep.getProducts();
+				for(Integer prodId :productIds)
+				{
+					products1.add(pdao.getProduct(prodId));
+				}			
+				daopRep.setProducts(products1);   
 			return daopRep;
 		}
 		
