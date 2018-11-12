@@ -16,7 +16,7 @@ public class DBConnect {
 		Connection connection = null;
 		DBConfig config = new DBConfig();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver");
 			connection = DriverManager.getConnection(config.getDatabaseURL(),config.getUsername(),config.getPassword());
 			
 		}catch(SQLException exception) {

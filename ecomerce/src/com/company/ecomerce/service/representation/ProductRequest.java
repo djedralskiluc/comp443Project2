@@ -12,6 +12,7 @@ public class ProductRequest {
 	private String name;
 	private String details;
 	private double cost;
+	private int partner;
 	
 	public ProductRequest() {}
 
@@ -37,6 +38,14 @@ public class ProductRequest {
 
 	public void setCost(double cost) {
 		this.cost = cost;
+	}
+
+	public int getPartner() {
+		return partner;
+	}
+
+	public void setPartner(int partner) {
+		this.partner = partner;
 	}
 	
 	

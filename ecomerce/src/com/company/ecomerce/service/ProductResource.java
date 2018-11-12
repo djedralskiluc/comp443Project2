@@ -44,18 +44,18 @@ import com.company.ecomerce.workflow.ProductActivity;
 		@Produces({"application/xml" , "application/json"})
 		@Path("/product")
 		public ProductRepresentation createProduct(ProductRequest  productRequest) {
-			System.out.println("POST METHOD Request from Client with ............." + productRequest.getName() + "  " + productRequest.getDetails()+ "  " + productRequest.getCost());
+			System.out.println("POST METHOD Request from Client with ............." + productRequest.getName() + "  " + productRequest.getDetails()+ "  " + productRequest.getCost()+ "  " + productRequest.getPartner());
 			ProductActivity empActivity = new ProductActivity();
-			return empActivity.createProduct(productRequest.getName(), productRequest.getDetails(),productRequest.getCost(),1);
+			return empActivity.createProduct(productRequest.getName(), productRequest.getDetails(),productRequest.getCost(),productRequest.getPartner());
 		}
 		
 		@PUT
 		@Produces({"application/xml" , "application/json"})
 		@Path("/product")
 		public ProductRepresentation updateProduct(ProductRequest  productRequest) {
-			System.out.println("POST METHOD Request from Client with ............." + productRequest.getName() + "  " + productRequest.getDetails()+ "  " + productRequest.getCost());
+			System.out.println("POST METHOD Request from Client with ............." + productRequest.getName() + "  " + productRequest.getDetails()+ "  " + productRequest.getCost()+ "  " + productRequest.getPartner());
 			ProductActivity empActivity = new ProductActivity();
-			return empActivity.createProduct(productRequest.getName(), productRequest.getDetails(),productRequest.getCost(),1);
+			return empActivity.createProduct(productRequest.getName(), productRequest.getDetails(),productRequest.getCost(),productRequest.getPartner());
 		}
 		
 		@DELETE
