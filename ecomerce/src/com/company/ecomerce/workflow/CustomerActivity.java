@@ -9,7 +9,7 @@ import com.company.ecomerce.customer.*;
 import com.company.ecomerce.service.representation.CustomerRepresentation;
 
 public class CustomerActivity {
-	private static CustomerDAO dao = new CustomerDAO();
+	private static CustomerManager dao = new CustomerManager();
 		//private static CustomerManager dao = new CustomerManager();
 		
 		public Set<CustomerRepresentation> getCustomers() {

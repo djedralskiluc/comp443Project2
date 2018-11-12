@@ -9,7 +9,7 @@ import com.company.ecomerce.partner.*;
 import com.company.ecomerce.service.representation.PartnerRepresentation;
 
 public class PartnerActivity {
-	private static PartnerDAO dao = new PartnerDAO();
+	private static PartnerManager dao = new PartnerManager();
 		//private static PartnerManager dao = new PartnerManager();
 		
 		public Set<PartnerRepresentation> getPartners() {

@@ -9,8 +9,8 @@ import com.company.ecomerce.product.*;
 import com.company.ecomerce.service.representation.ProductRepresentation;
 
 public class ProductActivity {
-	private static ProductDAO dao = new ProductDAO();
-		//private static ProductManager dao = new ProductManager();
+	private static ProductManager dao = new ProductManager();
+		
 		
 		public Set<ProductRepresentation> getProducts() {
 			
