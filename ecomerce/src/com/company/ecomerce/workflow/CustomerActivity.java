@@ -4,9 +4,13 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.ws.rs.core.UriInfo;
+
 import com.company.ecomerce.dal.CustomerDAO;
 import com.company.ecomerce.customer.*;
+import com.company.ecomerce.domain.model.Link;
 import com.company.ecomerce.service.representation.CustomerRepresentation;
+import com.company.ecomerce.service.representation.ProductRepresentation;
 
 public class CustomerActivity {
 	private static CustomerManager dao = new CustomerManager();
@@ -50,7 +54,7 @@ public class CustomerActivity {
 			daopRep.setLastName(daop.getLastName());
 			daopRep.setPaymentType(daop.getPaymentType());
 			daopRep.setPhoneNumber(daop.getPhoneNumber());
-						
+			setLinks(daopRep, id);		
 			return daopRep;
 		}
 		
@@ -76,5 +80,14 @@ public class CustomerActivity {
 			dao.deleteCustomer(id);
 			
 			return "OK";
+		}
+		private void setLinks(CustomerRepresentation customerRep, int orderId) {
+			UriInfo uri= new UriInfo()
+			// Set up the activities that can be performed on orders
+			Link customerIdLink = new Link("List", 
+					UriInfo.getPath() + "/customerservice/customer/" + customerRep.getCustomerID());
+			Link customerListLink = new Link("List", 
+					UriInfo.getPath() + "/customerservice/customer/");
+			customerRep.setLinks(customerIdLink,customerListLink);
 		}
 }

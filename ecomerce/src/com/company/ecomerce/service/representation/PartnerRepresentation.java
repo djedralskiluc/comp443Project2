@@ -13,7 +13,7 @@ import com.company.ecomerce.product.Product;
 @XmlRootElement(name = "Partner")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class PartnerRepresentation {
+public class PartnerRepresentation extends AbstractRepresentation {
 	private int partnerId;
 	private List<Product> products;
 	private String name;

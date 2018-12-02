@@ -14,7 +14,7 @@
   	
   <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
       	
-  <jaxrs:server name="EmployeeService" address="http://localhost:8081">
+  <jaxrs:server name="Store" address="/">
 		<jaxrs:serviceBeans>
 			<ref bean="employeeServiceRest" />
 		</jaxrs:serviceBeans>
@@ -23,11 +23,11 @@
 		</jaxrs:providers> 
 
 		<jaxrs:schemaLocations>
-			<jaxrs:schemaLocation>com.company.hr.service.representation.EmployeeRequest</jaxrs:schemaLocation>
-			<jaxrs:schemaLocation>com.company.hr.service.representation.EmployeeRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.CustomerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.CustomerRepresentation</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-  	<bean id="employeeServiceRest" class="com.company.hr.service.EmployeeResource" />
+  	<bean id="employeeServiceRest" class="com.company.ecomerce.service.CustomerResource" />
   
 </beans>

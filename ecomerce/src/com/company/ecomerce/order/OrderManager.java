@@ -17,7 +17,11 @@ private static ProductDAO pdao = new ProductDAO();
 	}
 	
 	public Order getOrder(int id) {
-		return dao.getOrder(id);
+		Order a = dao.getOrder(id);
+		for(Integer product:a.getProductIds()) {
+			
+		}
+		return a;
 	}
 	
 

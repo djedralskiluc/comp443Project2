@@ -4,8 +4,11 @@ import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
 
+import javax.ws.rs.core.UriInfo;
+
 import com.company.ecomerce.dal.ProductDAO;
 import com.company.ecomerce.product.*;
+import com.company.ecomerce.domain.model.Link;
 import com.company.ecomerce.service.representation.ProductRepresentation;
 
 public class ProductActivity {
@@ -59,12 +62,20 @@ public class ProductActivity {
 			
 			return daopRep;
 		}
-		
+
 		public String deleteProduct(int id) {
 			
 			//dao.deleteProduct(id);
 			dao.deleteProduct(id);
 			
 			return "OK";
+		}
+		private void setLinks(ProductRepresentation productRep, int orderId) {
+			// Set up the activities that can be performed on orders
+			Link productIdLink = new Link("List", 
+					UriInfo.getPath() + "/productservice/product/" + productRep.getProductId());
+			Link productListLink = new Link("List", 
+					UriInfo.getPath() + "/productservice/product/");
+			productRep.setLinks(productIdLink,productListLink);
 		}
 }

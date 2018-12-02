@@ -18,7 +18,7 @@ import com.company.ecomerce.order.Payment;
 import com.company.ecomerce.product.Product;
 
 public class OrderDAO {
-
+	private ProductDAO productDAO;
 	public OrderDAO() {
 		
 	}
@@ -53,6 +53,9 @@ public class OrderDAO {
 			while (productResultSet.next()) {
 				  Integer i = productResultSet.getInt("productId");
 				  productIds.add(i);
+				  
+				  
+				  
 				}
 
 			

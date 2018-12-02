@@ -9,6 +9,7 @@ import com.company.ecomerce.dal.OrderDAO;
 import com.company.ecomerce.order.*;
 import com.company.ecomerce.product.Product;
 import com.company.ecomerce.product.ProductManager;
+import com.company.ecomerce.domain.model.Link;
 import com.company.ecomerce.service.representation.OrderRepresentation;
 
 public class OrderActivity {

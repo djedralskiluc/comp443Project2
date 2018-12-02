@@ -14,7 +14,7 @@ import com.company.ecomerce.product.Product;
 @XmlRootElement(name = "Order")
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
-public class OrderRepresentation {
+public class OrderRepresentation extends AbstractRepresentation {
 	private int orderID;
 	private Payment payment;
 	private OrderStatus orderStatus;

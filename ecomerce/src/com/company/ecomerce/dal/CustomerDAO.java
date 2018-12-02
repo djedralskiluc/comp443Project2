@@ -95,9 +95,14 @@ public class CustomerDAO{
 		Connection connection = DBConnect.getDatabaseConnection();
 		try {
 			Statement insertStatement = connection.createStatement();
+			if(addr == null)
+			{
+				addr = new Address();
+			}
+			
 			addressDAO.insertAddress(addr);
 			String insertQuery = "INSERT INTO * Customer (firstName,lastName,phone,AddressId)"
-					+ "VALUES('"+firstName+"','"+lastName+"','"+phoneNumber+"','"+1+"')";
+					+ "VALUES('"+firstName+"','"+lastName+"','"+phoneNumber+"','1')";
 			insertStatement.executeUpdate(insertQuery);
 			
 			

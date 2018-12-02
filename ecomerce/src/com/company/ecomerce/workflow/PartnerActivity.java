@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.Set;
 
 import com.company.ecomerce.dal.PartnerDAO;
+import com.company.ecomerce.domain.model.Link;
 import com.company.ecomerce.partner.*;
 import com.company.ecomerce.service.representation.PartnerRepresentation;
 
