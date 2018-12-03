@@ -7,6 +7,7 @@ import java.util.Set;
 import com.company.ecomerce.dal.PartnerDAO;
 import com.company.ecomerce.domain.model.Link;
 import com.company.ecomerce.partner.*;
+import com.company.ecomerce.service.representation.CustomerRepresentation;
 import com.company.ecomerce.service.representation.PartnerRepresentation;
 
 public class PartnerActivity {
@@ -41,7 +42,7 @@ public class PartnerActivity {
 			PartnerRepresentation daopRep = new PartnerRepresentation();
 			daopRep.setName(daop.getName());
 			daopRep.setPartnerType(daop.getPartnerType());
-			
+			setLinks(daopRep, id);	
 			return daopRep;
 		}
 		
@@ -53,7 +54,7 @@ public class PartnerActivity {
 			PartnerRepresentation daopRep = new PartnerRepresentation();
 			daopRep.setName(daop.getName());
 			daopRep.setPartnerType(daop.getPartnerType());
-			
+			setLinks(daopRep,daop.getPartnerId() );	
 			return daopRep;
 		}
 		
@@ -63,5 +64,15 @@ public class PartnerActivity {
 			dao.deletePartner(id);
 			
 			return "OK";
+		}
+		private void setLinks(PartnerRepresentation partnerRep, int Id) {
+			//UriInfo uri= new UriInfo();
+			// Set up the activities that can be performed on orders
+			Link productLink = new Link("List", 
+					"localhost:8080" + "/productservice/product/");
+			Link customerListLink = new Link("List", 
+					//UriInfo.getPath()
+					"localhost:8080"+ "/customerservice/customer/");
+			partnerRep.setLinks(productLink,customerListLink);
 		}
 }

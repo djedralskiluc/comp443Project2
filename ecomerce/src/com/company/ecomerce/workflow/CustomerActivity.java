@@ -70,7 +70,7 @@ public class CustomerActivity {
 			daopRep.setLastName(daop.getLastName());
 			daopRep.setPaymentType(daop.getPaymentType());
 			daopRep.setPhoneNumber(daop.getPhoneNumber());
-						
+			setLinks(daopRep, daop.getCustomerID());				
 			return daopRep;
 		}
 		
@@ -82,12 +82,17 @@ public class CustomerActivity {
 			return "OK";
 		}
 		private void setLinks(CustomerRepresentation customerRep, int orderId) {
-			UriInfo uri= new UriInfo()
+			//UriInfo uri= new UriInfo();
 			// Set up the activities that can be performed on orders
 			Link customerIdLink = new Link("List", 
-					UriInfo.getPath() + "/customerservice/customer/" + customerRep.getCustomerID());
+					"localhost:8080" + "/customerservice/customer/" + customerRep.getCustomerID());
 			Link customerListLink = new Link("List", 
-					UriInfo.getPath() + "/customerservice/customer/");
-			customerRep.setLinks(customerIdLink,customerListLink);
+					//UriInfo.getPath()
+					"localhost:8080"+ "/customerservice/customer/");
+			Link orderListLink = new Link("List", 
+					//UriInfo.getPath()
+					"localhost:8080"+ "/orderservice/order/");
+
+			customerRep.setLinks(customerIdLink,customerListLink,orderListLink);
 		}
 }

@@ -14,9 +14,12 @@
   	
   <bean id="jacksonProvider" class="org.codehaus.jackson.jaxrs.JacksonJaxbJsonProvider" />
       	
-  <jaxrs:server name="Store" address="/">
+  <jaxrs:server name="EmployeeService">
 		<jaxrs:serviceBeans>
-			<ref bean="employeeServiceRest" />
+			<ref bean="customerServiceRest" />
+			<ref bean="orderServiceRest" />
+			<ref bean="partnerServiceRest" />
+			<ref bean="productServiceRest" />
 		</jaxrs:serviceBeans>
 		<jaxrs:providers>
 			<ref bean="jacksonProvider" />
@@ -25,9 +28,18 @@
 		<jaxrs:schemaLocations>
 			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.CustomerRequest</jaxrs:schemaLocation>
 			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.CustomerRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.OrderRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.OrderRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.PartnerRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.PartnerRepresentation</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.ProductRequest</jaxrs:schemaLocation>
+			<jaxrs:schemaLocation>com.company.ecomerce.service.representation.ProductRepresentation</jaxrs:schemaLocation>
 		</jaxrs:schemaLocations>
 
 	</jaxrs:server>
-  	<bean id="employeeServiceRest" class="com.company.ecomerce.service.CustomerResource" />
+  	<bean id="customerServiceRest" class="com.company.ecomerce.service.CustomerResource" />
+  	<bean id="orderServiceRest" class="com.company.ecomerce.service.OrderResource" />
+  	<bean id="partnerServiceRest" class="com.company.ecomerce.service.PartnerResource" />
+  	<bean id="productServiceRest" class="com.company.ecomerce.service.ProductResource" />
   
 </beans>

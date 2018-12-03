@@ -10,6 +10,7 @@ import com.company.ecomerce.order.*;
 import com.company.ecomerce.product.Product;
 import com.company.ecomerce.product.ProductManager;
 import com.company.ecomerce.domain.model.Link;
+import com.company.ecomerce.service.representation.CustomerRepresentation;
 import com.company.ecomerce.service.representation.OrderRepresentation;
 
 public class OrderActivity {
@@ -73,6 +74,7 @@ public class OrderActivity {
 				products.add(pdao.getProduct(prodId));
 			}			
 			daopRep.setProducts(products);
+			setLinks(daopRep,id);
 			return daopRep;
 		}
 		
@@ -96,6 +98,7 @@ public class OrderActivity {
 					products1.add(pdao.getProduct(prodId));
 				}			
 				daopRep.setProducts(products1);   
+				setLinks(daopRep,daop.getOrderID());
 			return daopRep;
 		}
 		
@@ -105,5 +108,23 @@ public class OrderActivity {
 			dao.deleteOrder(id);
 			
 			return "OK";
+		}
+		private void setLinks(OrderRepresentation orderRep, int orderId) {
+			//UriInfo uri= new UriInfo();
+			// Set up the activities that can be performed on orders
+			Link customerIdLink = new Link("List", 
+					"localhost:8080" + "/customerservice/customer/" + orderRep.getCustomerId());
+			Link customerListLink = new Link("List", 
+					//UriInfo.getPath()
+					"localhost:8080"+ "/customerservice/customer/");
+			Link orderListLink = new Link("List", 
+					//UriInfo.getPath()
+					"localhost:8080"+ "/orderservice/order/");
+			
+			Link productListLink = new Link("List", 
+					"localhost:8080" + "/productservice/product/");
+
+			orderRep.setLinks(customerIdLink,customerListLink,orderListLink,productListLink);
+
 		}
 }

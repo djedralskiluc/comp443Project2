@@ -73,9 +73,9 @@ public class ProductActivity {
 		private void setLinks(ProductRepresentation productRep, int orderId) {
 			// Set up the activities that can be performed on orders
 			Link productIdLink = new Link("List", 
-					UriInfo.getPath() + "/productservice/product/" + productRep.getProductId());
+					"localhost:8080" + "/productservice/product/" + productRep.getProductId());
 			Link productListLink = new Link("List", 
-					UriInfo.getPath() + "/productservice/product/");
+					"localhost:8080" + "/productservice/product/");
 			productRep.setLinks(productIdLink,productListLink);
 		}
 }
