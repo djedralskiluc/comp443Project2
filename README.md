@@ -29,3 +29,5 @@
 - /partner –post
 - /partner/{partnerId} –put
 - /partner/{partnerId} - delete
+
+for the client, please look at search.html
