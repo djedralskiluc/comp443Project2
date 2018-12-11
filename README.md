@@ -1,6 +1,6 @@
 # comp443Project2
 
-## endopints:
+## endpoints:
 
 ### orderservice
 - order – get
