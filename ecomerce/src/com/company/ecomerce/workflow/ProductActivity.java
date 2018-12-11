@@ -13,7 +13,7 @@ import com.company.ecomerce.service.representation.ProductRepresentation;
 
 public class ProductActivity {
 	private static ProductManager dao = new ProductManager();
-		
+	private static String url = "http://localhost:8081";
 		
 		public Set<ProductRepresentation> getProducts() {
 			
@@ -30,10 +30,11 @@ public class ProductActivity {
 	          productRepresentation.setName(daop.getName());
 	          productRepresentation.setDetails(daop.getDetails());
 	          productRepresentation.setPartnerId(daop.getPartnerId());
-	          
+	          setLinks(productRepresentation,daop.getProductId());
 	          //now add this representation in the list
 	          productRepresentations.add(productRepresentation);
 	        }
+			
 			return productRepresentations;
 		}
 		
@@ -46,7 +47,7 @@ public class ProductActivity {
 			daopRep.setName(daop.getName());
 			daopRep.setDetails(daop.getDetails());
 			daopRep.setCost(daop.getCost());
-			
+			setIDLinks(daopRep,daop.getProductId());
 			return daopRep;
 		}
 		
@@ -59,7 +60,7 @@ public class ProductActivity {
 			daopRep.setName(daop.getName());
 			daopRep.setDetails(daop.getDetails());
 			daopRep.setCost(daop.getCost());
-			
+			setIDLinks(daopRep,daop.getProductId());
 			return daopRep;
 		}
 
@@ -73,9 +74,17 @@ public class ProductActivity {
 		private void setLinks(ProductRepresentation productRep, int orderId) {
 			// Set up the activities that can be performed on orders
 			Link productIdLink = new Link("List", 
-					"localhost:8080" + "/productservice/product/" + productRep.getProductId());
+					url + "/productservice/product/" + productRep.getProductId(),"application/json");
 			Link productListLink = new Link("List", 
-					"localhost:8080" + "/productservice/product/");
+					url + "/productservice/product/","application/json");
 			productRep.setLinks(productIdLink,productListLink);
+		}
+		private void setIDLinks(ProductRepresentation productRep, int orderId) {
+			// Set up the activities that can be performed on orders
+			Link productIdLink = new Link("PUT", 
+					url + "/productservice/product/" + productRep.getProductId(),"application/json");
+			Link productDeleteLink = new Link("DELETE", 
+					url + "/productservice/product/"+ productRep.getProductId(),"application/json");
+			productRep.setLinks(productIdLink,productDeleteLink);
 		}
 }

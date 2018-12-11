@@ -5,7 +5,7 @@ $(document).ready(function () {
 
     var product_modal_template = Handlebars.compile(source);
 
-    var productResourceURI= "http://localhost:8081/employeeservice/employee"//needs product uri
+    var productResourceURI= "http://localhost:8081/productservice/product"//needs product uri
 
     //retrieve all the products from server then display them on the homepage
     // if server doesn't return any products for some reason, the homepage will not have a list of products displayed.

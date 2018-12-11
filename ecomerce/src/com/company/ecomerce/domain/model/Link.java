@@ -6,12 +6,13 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Link {
 	private String action;
 	private String url;
-	
+	private String type;
 	public Link() {}
 	
-	public Link(String action, String url) {
+	public Link(String action, String url, String type ) {
 		this.action = action;
 		this.url = url;
+		this.type = type;
 	}
 	
 	public String getAction() {
@@ -25,6 +26,12 @@ public class Link {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
 	}
 	
 }

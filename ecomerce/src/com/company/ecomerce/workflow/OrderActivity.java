@@ -18,6 +18,7 @@ public class OrderActivity {
 	//private static ProductDAO pdao = new ProductDAO();
 		private static OrderManager dao = new OrderManager();
 		private static ProductManager pdao = new ProductManager();
+		private static String url = "http://localhost:8081";
 		
 		public Set<OrderRepresentation> getOrders() {
 			
@@ -41,10 +42,10 @@ public class OrderActivity {
 	          orderRepresentation.setProductIds(daop.getProductIds());	
 	          List<Integer> productIds = daop.getProductIds();
 				List<Product> products = daop.getProducts();
-				for(Integer prodId :productIds)
-				{
-					products.add(pdao.getProduct(prodId));
-				}			
+//				for(Integer prodId :productIds)
+//				{
+//					products.add(pdao.getProduct(prodId));
+//				}			
 				orderRepresentation.setProducts(products);         
 	          //now add this representation in the list
 	          orderRepresentations.add(orderRepresentation);
@@ -69,10 +70,10 @@ public class OrderActivity {
 			
 			List<Integer> productIds = daopRep.getProductIds();
 			List<Product> products = daopRep.getProducts();
-			for(Integer prodId :productIds)
-			{
-				products.add(pdao.getProduct(prodId));
-			}			
+//			for(Integer prodId :productIds)
+//			{
+//				products.add(pdao.getProduct(prodId));
+//			}			
 			daopRep.setProducts(products);
 			setLinks(daopRep,id);
 			return daopRep;
@@ -113,16 +114,16 @@ public class OrderActivity {
 			//UriInfo uri= new UriInfo();
 			// Set up the activities that can be performed on orders
 			Link customerIdLink = new Link("List", 
-					"localhost:8080" + "/customerservice/customer/" + orderRep.getCustomerId());
+					url + "/customerservice/customer/" + orderRep.getCustomerId(),"application/json");
 			Link customerListLink = new Link("List", 
 					//UriInfo.getPath()
-					"localhost:8080"+ "/customerservice/customer/");
+					url+ "/customerservice/customer/","application/json");
 			Link orderListLink = new Link("List", 
 					//UriInfo.getPath()
-					"localhost:8080"+ "/orderservice/order/");
+					url+ "/orderservice/order/","application/json");
 			
 			Link productListLink = new Link("List", 
-					"localhost:8080" + "/productservice/product/");
+					url + "/productservice/product/","application/json");
 
 			orderRep.setLinks(customerIdLink,customerListLink,orderListLink,productListLink);
 

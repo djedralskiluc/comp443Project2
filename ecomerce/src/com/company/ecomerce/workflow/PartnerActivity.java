@@ -13,7 +13,7 @@ import com.company.ecomerce.service.representation.PartnerRepresentation;
 public class PartnerActivity {
 	private static PartnerManager dao = new PartnerManager();
 		//private static PartnerManager dao = new PartnerManager();
-		
+	private static String url = "http://localhost:8081";
 		public Set<PartnerRepresentation> getPartners() {
 			
 			Set<Partner> partners = new HashSet<Partner>();
@@ -69,10 +69,10 @@ public class PartnerActivity {
 			//UriInfo uri= new UriInfo();
 			// Set up the activities that can be performed on orders
 			Link productLink = new Link("List", 
-					"localhost:8080" + "/productservice/product/");
+					url + "/productservice/product/","application/json");
 			Link customerListLink = new Link("List", 
 					//UriInfo.getPath()
-					"localhost:8080"+ "/customerservice/customer/");
+					url+ "/customerservice/customer/","application/json");
 			partnerRep.setLinks(productLink,customerListLink);
 		}
 }

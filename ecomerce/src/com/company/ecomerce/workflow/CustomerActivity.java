@@ -15,7 +15,7 @@ import com.company.ecomerce.service.representation.ProductRepresentation;
 public class CustomerActivity {
 	private static CustomerManager dao = new CustomerManager();
 		//private static CustomerManager dao = new CustomerManager();
-		
+	private static String url = "http://localhost:8081";
 		public Set<CustomerRepresentation> getCustomers() {
 			
 			Set<Customer> customers = new HashSet<Customer>();
@@ -84,15 +84,17 @@ public class CustomerActivity {
 		private void setLinks(CustomerRepresentation customerRep, int orderId) {
 			//UriInfo uri= new UriInfo();
 			// Set up the activities that can be performed on orders
-			Link customerIdLink = new Link("List", 
-					"localhost:8080" + "/customerservice/customer/" + customerRep.getCustomerID());
-			Link customerListLink = new Link("List", 
+			Link customerIdLink = new Link("Get", 
+					url + "/customerservice/customer/" + customerRep.getCustomerID(),"application/json");
+			Link customerputLink = new Link("PUT", 
+					url + "/customerservice/customer/" + customerRep.getCustomerID(),"application/json");
+			Link customerListLink = new Link("Get", 
 					//UriInfo.getPath()
-					"localhost:8080"+ "/customerservice/customer/");
-			Link orderListLink = new Link("List", 
+					url+ "/customerservice/customer/","application/json");
+			Link orderListLink = new Link("Get", 
 					//UriInfo.getPath()
-					"localhost:8080"+ "/orderservice/order/");
+					url+ "/orderservice/order/","application/json");
 
-			customerRep.setLinks(customerIdLink,customerListLink,orderListLink);
+			customerRep.setLinks(customerIdLink,customerputLink,customerListLink,orderListLink);
 		}
 }

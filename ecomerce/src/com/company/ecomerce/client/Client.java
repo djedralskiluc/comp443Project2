@@ -79,54 +79,54 @@ public final class Client {
 //       System.out.println("Client POST METHOD Request URI:  " + postRequestURI);
 //       String postRequestHeaders = postClient.getHeaders().toString();
 //       System.out.println("Client POST METHOD Request Headers:  " + postRequestHeaders);
-       Customer customer = new Customer();
-       //customer.addCustomer().setFirstName("Michael");
-       Address addr  = new Address();
-       addr.setAddr1("123 Sesame St");
-       addr.setCity("New York");
-       addr.setState("NY");
-       addr.setZip("10001");
-       
-       CustomerManager customerManager = new CustomerManager();
-       customerManager.addCustomer("Ben","Stone","555-555-5555",addr);
-       Set<Customer> customerList =  customerManager.getAllCustomers();
-       Customer firstCustomer = customerList.iterator().next();
-       customerManager.updateCustomer(firstCustomer.getCustomerID(), "444-444-4444", addr);
-       customerManager.getCustomer(firstCustomer.getCustomerID());  
-       customerManager.AddorUpdateCustomerPayment(firstCustomer.getCustomerID(), "AMEX", "555555555555", "04/20", "1234", "Customer J Daniel");
-       customerManager.deleteCustomer(firstCustomer.getCustomerID());
-       
-       
-       
-       ProductManager productManager = new ProductManager();
-       productManager.addProduct("ballbox", "Box o balls", 4, 0);
-       productManager.updateProduct(1, 5);
-       productManager.getAllProducts();
-       productManager.addProductReview("Thats a lot of balls in that Box", 5, 1, 1);
-       productManager.deleteProduct(1);
-       
-       
-       
-       PartnerManager partnerManager = new PartnerManager();
-       partnerManager.addPartner("Partner1", 1);
-       partnerManager.updatePartner(1, 2);
-       partnerManager.getAllPartners();
-       partnerManager.getPartnerProduct(1);
-       partnerManager.deletePartner(1);
-       
-       OrderManager orderMangager = new OrderManager();
-       Integer[] ints = new Integer[] {1,2,3,4,5};
-       List<Integer> list = Arrays.asList(ints);
-       
-       orderMangager.addOrder(1,list,1, 1);
-       orderMangager.updateOrder(1, 2);
-       orderMangager.getAllOrders();
-       orderMangager.getOrder(1);
-       orderMangager.deleteOrder(1);
-       
-       
-       
-       
+//       Customer customer = new Customer();
+//       //customer.addCustomer().setFirstName("Michael");
+//       Address addr  = new Address();
+//       addr.setAddr1("123 Sesame St");
+//       addr.setCity("New York");
+//       addr.setState("NY");
+//       addr.setZip("10001");
+//       
+//       CustomerManager customerManager = new CustomerManager();
+//       customerManager.addCustomer("Ben","Stone","555-555-5555",addr);
+//       Set<Customer> customerList =  customerManager.getAllCustomers();
+//       Customer firstCustomer = customerList.iterator().next();
+//       customerManager.updateCustomer(firstCustomer.getCustomerID(), "444-444-4444", addr);
+//       customerManager.getCustomer(firstCustomer.getCustomerID());  
+//       customerManager.AddorUpdateCustomerPayment(firstCustomer.getCustomerID(), "AMEX", "555555555555", "04/20", "1234", "Customer J Daniel");
+//       customerManager.deleteCustomer(firstCustomer.getCustomerID());
+//       
+//       
+//       
+//       ProductManager productManager = new ProductManager();
+//       productManager.addProduct("ballbox", "Box o balls", 4, 0);
+//       productManager.updateProduct(1, 5);
+//       productManager.getAllProducts();
+//       productManager.addProductReview("Thats a lot of balls in that Box", 5, 1, 1);
+//       productManager.deleteProduct(1);
+//       
+//       
+//       
+//       PartnerManager partnerManager = new PartnerManager();
+//       partnerManager.addPartner("Partner1", 1);
+//       partnerManager.updatePartner(1, 2);
+//       partnerManager.getAllPartners();
+//       partnerManager.getPartnerProduct(1);
+//       partnerManager.deletePartner(1);
+//       
+//       OrderManager orderMangager = new OrderManager();
+//       Integer[] ints = new Integer[] {1,2,3,4,5};
+//       List<Integer> list = Arrays.asList(ints);
+//       
+//       orderMangager.addOrder(1,list,1, 1);
+//       orderMangager.updateOrder(1, 2);
+//       orderMangager.getAllOrders();
+//       orderMangager.getOrder(1);
+//       orderMangager.deleteOrder(1);
+//       
+//       
+//       
+//       
 //       productManager.updateProductReview(productReviewId, rating);
 //       Set<Customer> customerList =  customerManager.getAllCustomers();
 //       Customer firstCustomer = customerList.iterator().next();
