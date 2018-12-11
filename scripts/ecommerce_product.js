@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
     //extract whatever is inside of the script tag with an id of product-modal-template
-    var source = $("#product_modal_template").html();
+    var source = $("#product-modal-template").html();
 
     var product_modal_template = Handlebars.compile(source);
 
@@ -14,10 +14,13 @@ $(document).ready(function () {
         for (var i = 0; i < products.length; i++) {
 
             var productData = {
-                productID: ""+produdcts[i].gid,
-                Name: ""+products[i].name,
-                cost: +products[i].cost
-                //deletelink: empoloyees[1].link.href for deletes
+                productID: ""+produdcts[i].productId,
+                name: ""+products[i].name,
+                details: ""+products[i].details,
+                partner: ""+productData[i].partnerId,
+                cost: ""+products[i].cost,
+                deletelink: empoloyees[1].link.url, //for deletes
+                updatelink: empoloyees[0].link.url //for edits
                 //use cookies to save metadata between pages
             };
 
@@ -35,62 +38,51 @@ $(document).ready(function () {
 
 
     //submit the add employee form to the server
-    // $('form').submit(function (event) {
-    //
-    //     /**
-    //      * salary and privilege are not sent to the server since there is no endpoint that accepts those parameters
-    //      * @type {{firstName: *, lastName: *}}
-    //      */
-    //     var formData = {
-    //         'firstName': getFirstName(),
-    //         'lastName': getLastName()
-    //     };
-    //
-    //     $.ajax({
-    //         method: 'POST',
-    //         headers: {
-    //             'Accept': 'application/json',
-    //             'Content-Type': 'application/json'
-    //         },
-    //         url: employeeResourceURI,
-    //         data: JSON.stringify(formData),
-    //         dataType: 'json',
-    //         encode: true
-    //     }).done(function(returnedData){
-    //
-    //         alert("Employee has been added");
-    //
-    //     });
-    //     event.preventDefault(); // waits for a response from server before proceeding with the rest of the code
-    //
-    // });
-    //
-    //
-    // function getFirstName() {
-    //     var fullName = getFullName();
-    //     return fullName.split(" ")[0];
-    //
-    // }
-    //
-    // function getLastName() {
-    //     var fullName = getFullName();
-    //     return fullName.split(" ")[1];
-    //
-    // }
-    // function getFullName(){
-    //     return $("input[name=newFullName]").val();
-    //
-    // }
-    //
-    // function getSalary(){
-    //     return $("input[name=newSalary]").val();
-    //
-    //
-    // }
-    //
-    // function getPrivileges(){
-    //     return $("input[name=newPrivileges]").val();
-    // }
+    $('form').submit(function (event) {
+    
+
+    
+        $.ajax({
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            url: productResourceURI,
+            data: JSON.stringify(formData),
+            dataType: 'json',
+            encode: true
+        }).done(function(returnedData){
+    
+            alert("Product has been added");
+    
+        });
+        event.preventDefault(); // waits for a response from server before proceeding with the rest of the code
+    
+    });
+    
+    
+
+    
+    function getPartnerId(){
+        return $("input[name=newPartnerId]").val();
+    
+    
+    }
+    function getName(){
+        return $("input[name=newName]").val();
+    
+    
+    }
+    function getDetails(){
+        return $("input[name=newDetails]").val();    
+    
+    }
+    function getCost(){
+        return $("input[name=newCost]").val();   
+    
+    }
+
 
 
 
