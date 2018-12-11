@@ -113,16 +113,16 @@ public class OrderActivity {
 		private void setLinks(OrderRepresentation orderRep, int orderId) {
 			//UriInfo uri= new UriInfo();
 			// Set up the activities that can be performed on orders
-			Link customerIdLink = new Link("List", 
+			Link customerIdLink = new Link("PUT", 
 					url + "/customerservice/customer/" + orderRep.getCustomerId(),"application/json");
-			Link customerListLink = new Link("List", 
+			Link customerListLink = new Link("GET", 
 					//UriInfo.getPath()
 					url+ "/customerservice/customer/","application/json");
-			Link orderListLink = new Link("List", 
+			Link orderListLink = new Link("GET", 
 					//UriInfo.getPath()
 					url+ "/orderservice/order/","application/json");
 			
-			Link productListLink = new Link("List", 
+			Link productListLink = new Link("GET", 
 					url + "/productservice/product/","application/json");
 
 			orderRep.setLinks(customerIdLink,customerListLink,orderListLink,productListLink);

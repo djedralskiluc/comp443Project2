@@ -35,7 +35,7 @@ public class CustomerActivity {
 	          customerRepresentation.setPaymentType(daop.getPaymentType());
 	          customerRepresentation.setPhoneNumber(daop.getPhoneNumber());
 							
-	          	          
+	          setLinks(customerRepresentation, daop.getCustomerID());	       
 	          //now add this representation in the list
 	          customerRepresentations.add(customerRepresentation);
 	        }

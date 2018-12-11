@@ -30,7 +30,7 @@ public class ProductActivity {
 	          productRepresentation.setName(daop.getName());
 	          productRepresentation.setDetails(daop.getDetails());
 	          productRepresentation.setPartnerId(daop.getPartnerId());
-	          setLinks(productRepresentation,daop.getProductId());
+	          setIDLinks(productRepresentation,daop.getProductId());
 	          //now add this representation in the list
 	          productRepresentations.add(productRepresentation);
 	        }
@@ -71,20 +71,17 @@ public class ProductActivity {
 			
 			return "OK";
 		}
-		private void setLinks(ProductRepresentation productRep, int orderId) {
-			// Set up the activities that can be performed on orders
-			Link productIdLink = new Link("List", 
-					url + "/productservice/product/" + productRep.getProductId(),"application/json");
-			Link productListLink = new Link("List", 
-					url + "/productservice/product/","application/json");
-			productRep.setLinks(productIdLink,productListLink);
-		}
+		
 		private void setIDLinks(ProductRepresentation productRep, int orderId) {
 			// Set up the activities that can be performed on orders
 			Link productIdLink = new Link("PUT", 
 					url + "/productservice/product/" + productRep.getProductId(),"application/json");
 			Link productDeleteLink = new Link("DELETE", 
 					url + "/productservice/product/"+ productRep.getProductId(),"application/json");
-			productRep.setLinks(productIdLink,productDeleteLink);
+			Link orderListLink = new Link("POST", 
+					url + "/orderservice/order/","application/json");
+			Link partnerListLink = new Link("GET", 
+					url + "/partnerservice/partner/","application/json");
+			productRep.setLinks(productIdLink,productDeleteLink,orderListLink,partnerListLink);
 		}
 }
